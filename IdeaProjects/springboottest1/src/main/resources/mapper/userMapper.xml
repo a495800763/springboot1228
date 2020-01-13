@@ -7,12 +7,12 @@
     </select>
 
   <!--新用户注册  方式1-->
-  <insert id="adduser" parameterType="user" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO user (name,password,age) VALUES (#{name},#{password})
+  <insert id="adduser" parameterType="user" useGeneratedKeys="false" keyProperty="id">
+        INSERT INTO user (name,password) VALUES (#{name},#{password})
     </insert>
 
   <!--新用户注册  方式2-->
   <insert id="adduser1" parameterType="user">
-        INSERT INTO user (id,name,password,age) VALUES (UUID(),#{name},#{password})
+        INSERT INTO user (id,name,password) VALUES (UUID(),#{name},#{password})
     </insert>
 </mapper>

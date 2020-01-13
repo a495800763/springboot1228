@@ -1,8 +1,12 @@
 package com.example.springboottest1.mapper;
 
 import com.example.springboottest1.entity.user;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+@Mapper
+@Component
 public interface userMapper {
     //用户登录
     user userlogin(@Param("name") String name, @Param("password") String password);
