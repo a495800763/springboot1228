@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title>myDia</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="../css/bootstrap-theme.min.css"/>
+	<script src="jquery/3.1.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js" type="application/javascript"></script>
+<script src="js/echarts.min.js"></script>
+</head>
+<body style="background-color: #B2DBA1;">
+		<div class="row">
+			<div class="col-md-4">
+			</div>
+			<div class="col-md-4">
+				<div class="jumbotron">
+					<h1 class="text-center">
+						<span><i class="glyphicon glyphicon-ban-circle"></i></span>
+					</h1>
+					<br />
+					<h1 class="text-center">
+						注册失败
+					</h1>
+					<p th:text="${info}" class ="text-center"></p>
+					<hr>
+					<p class="text-center">跳转到主页</p>
+					<p class="text-center">
+						<a class="btn btn-primary btn-lg" href="/" role="button">
+							<span>
+								<i class="glyphicon glyphicon-home"></i>
+							</span> 主页
+						</a>
+					</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+			</div>
+		</div>
+	</body>
+</html>
