@@ -2,6 +2,9 @@ package com.example.springboottest1.entity;
 
 import java.util.Date;
 
+/**
+ * @author :liumq
+ */
 public class bookInfo {
 
     private Long autoid;
