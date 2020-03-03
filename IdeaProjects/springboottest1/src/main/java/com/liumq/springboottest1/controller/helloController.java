@@ -46,7 +46,7 @@ public class helloController {
     public ModelAndView register(@RequestParam("username") String userName, @RequestParam("password") String password,
                                  @RequestParam("confirmpassword") String passwordNew, @RequestParam("usertype") Integer userType,
                                  ModelAndView mav) {
-        System.out.println("===============拦截登录成功===============");
+        System.out.println("===============拦截注册成功===============");
         System.out.println("username：" + userName);
         System.out.println("password：" + password);
         System.out.println("passwordNew：" + passwordNew);
