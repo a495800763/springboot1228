@@ -2,7 +2,9 @@ package com.liumq.springboottest1.mapper;
 
 import com.liumq.springboottest1.entity.ClassBookRelation;
 import com.liumq.springboottest1.entity.ClassBookRelationKey;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface ClassBookRelationMapper {
 
     int deleteByPrimaryKey(ClassBookRelationKey key);

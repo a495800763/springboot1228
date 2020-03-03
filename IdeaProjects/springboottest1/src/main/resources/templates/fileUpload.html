@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/bootstrap-theme.min.css"/>
+    <script src="jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="js/upload.js" type="application/javascript"></script>
+    <link rel="shortcut icon" href="image/bitbug_favicon.ico">
+</head>
+<body>
+<div class="wrap">
+    <!-- header -->
+    <div></div>
+    <!-- content -->
+    <div class="content">
+        <!-- content-main -->
+        <div id="main">
+            <form method="post" th:action="upload" enctype="multipart/form-data">
+                <div class="main-head">
+                    <div class="main-head-left"><span>基础信息</span></div>
+                    <div class="main-head-right main-head-margin">
+                        <button class="btn btn-color" onclick="updateGuardian()">
+                            <i class="fa fa-hourglass-half" aria-hidden="true"></i>&nbsp&nbsp保存
+                        </button>
+                    </div>
+                </div>
+                <p class="clear"></p>
+                <hr>
+                <div class="info-left" id="camera">
+                    <input id="file" type="file" style="display:none" name="file" onchange="upImg()">
+                    <img src="image/happyface.png" alt="上传照片" id="img" onclick="file.click()">
+                </div>
+
+                <p class="clear"></p>
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

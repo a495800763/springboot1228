@@ -58,13 +58,14 @@ public class LoginService implements ILoginService {
     }
 
     @Override
-	public boolean userRegister(String password, String userName, Integer userType) {
+	public boolean userRegister(String password, String userName, Integer userType ,String imageUrl) {
 
         if (userMapper.selectByUserName(userName) == 0) {
             User user = new User();
             user.setPassword(password);
             user.setUsername(userName);
             user.setUsertype(userType);
+            user.setImageurl(imageUrl);
             user.setInsertdatetime(new Date());
             int num = userMapper.insert(user);
             System.out.println("======" + num + "=====");

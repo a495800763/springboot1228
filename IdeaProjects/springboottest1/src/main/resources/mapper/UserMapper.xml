@@ -12,9 +12,9 @@
   </resultMap>
   <insert id="insert" parameterType="com.liumq.springboottest1.entity.User">
     insert into user (id, username, password, 
-      insertdatetime, usertype)
+      insertdatetime, usertype,imageurl)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{insertdatetime,jdbcType=TIMESTAMP}, #{usertype,jdbcType=INTEGER})
+      #{insertdatetime,jdbcType=TIMESTAMP}, #{usertype,jdbcType=INTEGER},#{imageurl,jdbcType=VARCHAR})
   </insert>
   <update id="updateByUserName" parameterType ="com.liumq.springboottest1.entity.User">
   update user set password =#{password,jdbcType=VARCHAR} where username =#{username,jdbcType=VARCHAR}

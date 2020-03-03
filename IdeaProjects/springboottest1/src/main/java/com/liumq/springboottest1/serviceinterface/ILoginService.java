@@ -16,7 +16,7 @@ public interface ILoginService {
 
     List<Book> getAllBook();
 
-    boolean userRegister(String password, String userName, Integer userType);
+    boolean userRegister(String password, String userName, Integer userType,String imageUrl);
 
      User userLogin(User user);
 }

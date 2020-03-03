@@ -1,18 +1,19 @@
 package com.liumq.springboottest1.mapper;
 
 import com.liumq.springboottest1.entity.ClassInfo;
+import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
+@Mapper
 public interface ClassInfoMapper {
 
-    int deleteByPrimaryKey(Integer autoid);
+   int insert (ClassInfo record);
 
-    int insert(ClassInfo record);
+   List<ClassInfo> selectAll();
 
-    int insertSelective(ClassInfo record);
+   List<ClassInfo> selectByClassName(String className);
 
-    ClassInfo selectByPrimaryKey(Integer autoid);
+   int deleteByClassName(String className);
 
-    int updateByPrimaryKeySelective(ClassInfo record);
-
-    int updateByPrimaryKey(ClassInfo record);
 }

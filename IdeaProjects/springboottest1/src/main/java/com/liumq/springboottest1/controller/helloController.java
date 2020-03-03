@@ -6,9 +6,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.liumq.springboottest1.entity.Book;
@@ -16,7 +15,12 @@ import com.liumq.springboottest1.entity.BookType;
 import com.liumq.springboottest1.entity.User;
 import com.liumq.springboottest1.service.LoginService;
 
+import java.io.File;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import static com.liumq.springboottest1.util.UtilTool.imageMap;
 
 @Controller
 public class helloController {
@@ -42,15 +46,19 @@ public class helloController {
 
     }
 
-    @GetMapping("registerConfirm")
-    public ModelAndView register(@RequestParam("username") String userName, @RequestParam("password") String password,
-                                 @RequestParam("confirmpassword") String passwordNew, @RequestParam("usertype") Integer userType,
+    @RequestMapping(value = "registerConfirm",method = RequestMethod.POST)
+    public ModelAndView register(@RequestParam("username") String userName,
+                                 @RequestParam("password") String password,
+                                 @RequestParam("confirmpassword") String passwordNew,
+                                 @RequestParam("usertype") Integer userType,
+                                 @RequestParam("file") String file,
                                  ModelAndView mav) {
         System.out.println("===============拦截注册成功===============");
         System.out.println("username：" + userName);
         System.out.println("password：" + password);
         System.out.println("passwordNew：" + passwordNew);
         System.out.println("usertype：" + userType);
+        System.out.println("imageUrl：" + file);
         boolean result = false;
         if (password.equals("") || password == null) {
             mav.addObject("info", "请正确输入密码");
@@ -61,7 +69,8 @@ public class helloController {
         } else {
 
             if (password.equals(passwordNew)) {
-                result = loginService.userRegister(password, userName, userType);
+                String currentUrl = imageMap.get(file);
+                result = loginService.userRegister(password, userName, userType,currentUrl);
             } else {
                 mav.addObject("info", "两次输入的密码不一致");
             }
@@ -90,6 +99,52 @@ public class helloController {
     {
 
          return mav;
+    }
+
+    @RequestMapping("test")
+    public String test ()
+    {
+        return "fileUpload";
+    }
+
+    @PostMapping("/uploadImage")
+    @ResponseBody
+    public String upFile (@RequestParam("file")MultipartFile file)
+    {
+        //最终路径
+        String lastPath="";
+        String path = "D:/devsoft1/img/";
+        String fileName = file.getOriginalFilename();
+        String suffixName=fileName.substring(fileName.lastIndexOf("."));
+        fileName= UUID.randomUUID()+suffixName;
+        System.out.println(fileName);
+        System.out.println("type::" + suffixName);
+        System.out.println("filename::" + fileName);
+        File targetFile = new File(path);
+        if (!targetFile.exists()) {
+            targetFile.mkdirs();
+        }
+        File saveFile = new File(targetFile, fileName);
+        try {
+            file.transferTo(saveFile);
+            System.out.println("执行成功");
+            lastPath = path + fileName;
+            System.out.println(lastPath);
+            //     return "success";
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("执行失败");
+            return "failed";
+        }
+        imageMap.put(file.getOriginalFilename(),lastPath);
+        for(Map.Entry<String,String> a:imageMap.entrySet())
+        {
+            System.out.println("+++++++++++++"+a.getKey()+"+++++++++++++");
+            System.out.println("+++++++++++++"+a.getValue()+"+++++++++++++");
+
+        }
+        System.out.println("11111");
+        return "success";
     }
 
 }

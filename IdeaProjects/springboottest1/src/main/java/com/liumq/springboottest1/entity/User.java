@@ -16,12 +16,15 @@ public class User {
 
     private Integer usertype;
 
-    public User(Integer id, String username, String password, Date insertdatetime, Integer usertype) {
+    private String imageurl;
+
+    public User(Integer id, String username, String password, Date insertdatetime, Integer usertype,String imageurl) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.insertdatetime = insertdatetime;
         this.usertype = usertype;
+        this.imageurl =imageurl;
     }
 
     public User() {
@@ -68,18 +71,23 @@ public class User {
         this.usertype = usertype;
     }
 
+    public String getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
+    }
+
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", username=").append(username);
-        sb.append(", password=").append(password);
-        sb.append(", insertdatetime=").append(insertdatetime);
-        sb.append(", usertype=").append(usertype);
-        sb.append("]");
-        return sb.toString();
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", insertdatetime=" + insertdatetime +
+                ", usertype=" + usertype +
+                ", imageurl='" + imageurl + '\'' +
+                '}';
     }
 }
