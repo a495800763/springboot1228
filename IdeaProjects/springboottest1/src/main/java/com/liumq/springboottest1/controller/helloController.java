@@ -85,24 +85,11 @@ public class helloController {
         return mav;
     }
 
-    /**
-     * @RequestMapping(value ="/pathVariableTest/{userId}") public String
-     *                       testPage(@PathVariable Integer userId) {
-     *                       System.out.println("得到的用户id是："+userId); return "index";
-     *                       }
-     *
-     * @RequestMapping(value = "requestHeaderTest") public String
-     *                       requestHeadderTest(@RequestHeader(name
-     *                       =HttpHeaders.ACCEPT_LANGUAGE) String language) {
-     *                       System.out.println("得到的数据是："+language);
-     *
-     *                       return "index"; }
-     *
-     * @RequestMapping(value = "/cookieValueTest") public String
-     *                       cookieValueTest(@CookieValue(value =
-     *                       "JSESSIONID",defaultValue = "")String sessionId) {
-     *                       System.out.println("cookieValueTest得到的数据是："+sessionId);
-     *                       return "index"; }
-     **/
+    @RequestMapping("select")
+  public ModelAndView selectBookOrClass(@RequestParam("classname") String classname,ModelAndView mav,HttpSession session)
+    {
+
+         return mav;
+    }
 
 }
