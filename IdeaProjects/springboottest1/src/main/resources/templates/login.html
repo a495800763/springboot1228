@@ -7,8 +7,38 @@
     <link rel="stylesheet" href="../css/bootstrap-theme.min.css"/>
     <script src="jquery/3.1.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js" type="application/javascript"></script>
+    <link rel="shortcut icon" href="image/bitbug_favicon.ico">
 </head>
-<body>
-<h1>this is a  page</h1>
+<body style="background: url(image/background.jpg) repeat fixed center;">
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4 center-block">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4 center-block">
+            <form action="tologin"  method="get">
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="name">
+                </div>
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary" value="submit" style="display: block;margin: 0 auto;">
+		  <span>
+			  <i class="glyphicon glyphicon-log-in"></i>
+		  </span>
+                    登录
+                </button>
+            </form>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
 </body>
 </html>

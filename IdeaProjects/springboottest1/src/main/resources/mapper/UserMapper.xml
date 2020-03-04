@@ -24,7 +24,7 @@
   select count(*) from user where username =#{username}
   </select>
   <select id ="selectByUser" parameterType ="com.liumq.springboottest1.entity.User" resultType ="com.liumq.springboottest1.entity.User">
-  select  * from user where username =#{username,jdbcType=VARCHAR} and password={#passord,jdbcType=VARCHAR}
+  select  * from user where username =#{username,jdbcType=VARCHAR} and password=#{password,jdbcType=VARCHAR}
   limit 1 
   </select>
 </mapper>

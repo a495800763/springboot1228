@@ -1,6 +1,7 @@
 package com.liumq.springboottest1.controller;
 
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,11 +44,6 @@ public class helloController {
                                  @RequestParam("file") String file,
                                  ModelAndView mav) {
         System.out.println("===============拦截注册成功===============");
-        System.out.println("username：" + userName);
-        System.out.println("password：" + password);
-        System.out.println("passwordNew：" + passwordNew);
-        System.out.println("usertype：" + userType);
-        System.out.println("imageUrl：" + file);
         boolean result = false;
         if (password.equals("") || password == null) {
             mav.addObject("info", "请正确输入密码");
@@ -72,14 +68,15 @@ public class helloController {
         return mav;
     }
 
-    @RequestMapping("tologin")
+    @RequestMapping(value="tologin")
     public ModelAndView userLogin(@RequestParam("username") String username, @RequestParam("password") String password,
-                                  ModelAndView mav, HttpSession session) {
+                                  ModelAndView mav, HttpServletRequest request) {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
         User userLoginedUser = loginService.userLogin(user);
-        // TODO
+        request.getSession().setAttribute("userInfo",userLoginedUser);
+        mav.setViewName("index");
         return mav;
     }
 

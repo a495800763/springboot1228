@@ -1,11 +1,13 @@
 package com.liumq.springboottest1.config;
 
+import org.graalvm.compiler.hotspot.nodes.FastAcquireBiasedLockNode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Component
 public class MyInterceptor  implements HandlerInterceptor {
@@ -13,7 +15,22 @@ public class MyInterceptor  implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("==================开始拦截====================");
-        return HandlerInterceptor.super.preHandle(request, response, handler);
+        //return HandlerInterceptor.super.preHandle(request, response, handler);
+        System.out.println("==========登录状态拦截");
+        HttpSession session = request.getSession();
+        System.out.println("==========sessionId 为:" +session.getId());
+
+        Object userInfo = session.getAttribute("userInfo");
+        if(userInfo==null)
+        {
+            System.out.println("没有登录！！");
+            response.getWriter().write("Please Login In");
+            return  false;
+        }
+        else {
+            System.out.println("==========已经登录过了 用户信息是:" +userInfo);
+        }
+        return true;
     }
 
     @Override
