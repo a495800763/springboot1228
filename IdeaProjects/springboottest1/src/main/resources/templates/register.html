@@ -1,51 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-<title>注册</title>
-	<link rel="stylesheet" href="../css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="../css/bootstrap-theme.min.css"/>
-	<script src="jquery/3.1.1/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js" type="application/javascript"></script>
-	<script src="js/upload.js" type="application/javascript"></script>
-<script src="js/echarts.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>注册</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/bootstrap-theme.min.css"/>
+    <script src="jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="js/upload.js" type="application/javascript"></script>
+    <script src="js/echarts.min.js"></script>
 </head>
 <body>
 <div class="row">
-  <div class="col-md-4">
-	  </div>
-  <div class="col-md-4 center-block">
-	<form action="registerConfirm"  method="post">
-	  <div class="form-group">
-	    <label for="username">用户名</label>
-	    <input type="text" class="form-control" id="username" name="username" placeholder="name">
-	  </div>
-	  <div class="form-group">
-	    <label for="password">密码</label>
-	    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-	  </div>
-	  <div class="form-group">
-	    <label for="password">确认密码</label>
-	    <input type="password" class="form-control" id="password" name="confirmpassword" placeholder="Password">
-	  </div>
-		<div class="form-group">
-			<label for="file">头像</label>
-			<input id="file" type="file" style="display:none" name="file" onchange="upImg()">
-			<img src="image/happyface.png" alt="上传照片" id="img" onclick="file.click()">
-		</div>
-	  <div class="form-group">
-	      <label for="userType">用户类型</label>
-	      <select class="form-control" id="userType" name="usertype">
-	        <option value="1">管理员</option>
-	        <option value="2">老师</option>
-	        <option value="3">学生</option>
-	      </select>
-	    </div> 
-	  <button type="submit" class="btn btn-default" value="submit" onclick="updateGuardian()">Submit</button>
-	</form>
-	  </div>
-  <div class="col-md-4">
-	  </div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4 center-block">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4 center-block">
+            <form action="registerConfirm" method="post">
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="name">
+                </div>
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="password">确认密码</label>
+                    <input type="password" class="form-control" id="password" name="confirmpassword"
+                           placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="file">头像</label>
+                    <input id="file" type="file" style="display:none" name="file" onchange="upImg()">
+                    <img src="image/happyface.png" alt="上传照片" id="img" onclick="file.click()">
+                </div>
+                <div class="form-group">
+                    <label for="userType">用户类型</label>
+                    <select class="form-control" id="userType" name="usertype">
+                        <option value="1">管理员</option>
+                        <option value="2">老师</option>
+                        <option value="3">学生</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-default" value="submit" onclick="updateGuardian()">点击注册</button>
+            </form>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+    <div class="col-md-4">
+    </div>
 </div>
 </body>
 </html>

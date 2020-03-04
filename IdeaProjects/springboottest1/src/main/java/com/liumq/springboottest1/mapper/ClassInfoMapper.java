@@ -16,4 +16,6 @@ public interface ClassInfoMapper {
 
    int deleteByClassName(String className);
 
+   void updateClassInfoByClassName (ClassInfo record);
+
 }

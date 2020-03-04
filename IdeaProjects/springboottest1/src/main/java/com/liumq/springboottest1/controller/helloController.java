@@ -97,7 +97,6 @@ public class helloController {
     @RequestMapping("select")
   public ModelAndView selectBookOrClass(@RequestParam("classname") String classname,ModelAndView mav,HttpSession session)
     {
-
          return mav;
     }
 

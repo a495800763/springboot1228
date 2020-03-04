@@ -1,4 +1,3 @@
-
 package com.liumq.springboottest1;
 
 import org.mybatis.spring.annotation.MapperScan;
@@ -9,7 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("com.liumq.springboottest1.mapper")
 public class Springboottest1Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         SpringApplication.run(Springboottest1Application.class, args);
     }
 }
