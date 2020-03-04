@@ -1,4 +1,4 @@
-package com.liumq.springboottest1;
+package com.liumq.springboottest1.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

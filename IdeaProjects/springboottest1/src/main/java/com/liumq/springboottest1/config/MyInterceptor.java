@@ -1,4 +1,4 @@
-package com.liumq.springboottest1;
+package com.liumq.springboottest1.config;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

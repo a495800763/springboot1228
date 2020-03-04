@@ -2,14 +2,12 @@ package com.liumq.springboottest1.controller;
 
 
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.liumq.springboottest1.entity.Book;
 import com.liumq.springboottest1.entity.BookType;
 import com.liumq.springboottest1.entity.User;
@@ -34,16 +32,7 @@ public class helloController {
         List<Book> result = loginService.getAllBook();
         model.addAttribute("resultList", typeResultBookTypes);
         model.addAttribute("bookList", result);
-        System.out.println("==========开始打印....==========");
-        for (BookType item : typeResultBookTypes) {
-            System.out.println(item.toString());
-        }
-        System.out.println("==========书籍....==========");
-        for (Book item : result) {
-            System.out.println(item.toString());
-        }
         return "index";
-
     }
 
     @RequestMapping(value = "registerConfirm",method = RequestMethod.POST)
