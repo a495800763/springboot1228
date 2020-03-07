@@ -9,8 +9,13 @@ spring:
         password: 123456
         driver-class-name: com.mysql.jdbc.Driver
 
+#禁用模板缓存(禁止发布到生产环境)
+    thymeleaf:
+      cache: false
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
   type-aliases-package: com.liumq.springboottest1.entity  # 注意：对应实体类的路径
+
 
 

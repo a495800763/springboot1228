@@ -49,7 +49,6 @@ public class BookType {
         StringBuilder sb = new StringBuilder();
         sb.append(getClass().getSimpleName());
         sb.append(" [");
-        //sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", booktype=").append(booktype);
         sb.append(", typename=").append(typename);
