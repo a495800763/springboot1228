@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 10086
 
 spring:
     datasource:
@@ -13,9 +13,14 @@ spring:
     thymeleaf:
       cache: false
 
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
   type-aliases-package: com.liumq.springboottest1.entity  # 注意：对应实体类的路径
 
-
-
+management:
+ endpoints:
+   enabled-by-default: true
+   web:
+     exposure:
+       include: '*'
