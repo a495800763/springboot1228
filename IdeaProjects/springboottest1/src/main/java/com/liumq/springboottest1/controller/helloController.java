@@ -3,6 +3,8 @@ package com.liumq.springboottest1.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import com.liumq.springboottest1.Dto.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,13 +17,11 @@ import com.liumq.springboottest1.entity.User;
 import com.liumq.springboottest1.service.LoginService;
 
 import java.io.File;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import static com.liumq.springboottest1.util.UtilTool.imageMap;
 
-@Controller
+@RestController
 public class helloController {
 
     @Autowired
@@ -36,7 +36,7 @@ public class helloController {
         return "index";
     }
 
-    @RequestMapping(value = "registerConfirm",method = RequestMethod.POST)
+    @RequestMapping(value = "registerConfirm", method = RequestMethod.POST)
     public ModelAndView register(@RequestParam("username") String userName,
                                  @RequestParam("password") String password,
                                  @RequestParam("confirmpassword") String passwordNew,
@@ -55,7 +55,7 @@ public class helloController {
 
             if (password.equals(passwordNew)) {
                 String currentUrl = imageMap.get(file);
-                result = loginService.userRegister(password, userName, userType,currentUrl);
+                result = loginService.userRegister(password, userName, userType, currentUrl);
             } else {
                 mav.addObject("info", "两次输入的密码不一致");
             }
@@ -68,40 +68,37 @@ public class helloController {
         return mav;
     }
 
-    @RequestMapping(value="tologin")
+    @RequestMapping(value = "tologin")
     public ModelAndView userLogin(@RequestParam("username") String username, @RequestParam("password") String password,
                                   ModelAndView mav, HttpServletRequest request) {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
         User userLoginedUser = loginService.userLogin(user);
-        request.getSession().setAttribute("userInfo",userLoginedUser);
+        request.getSession().setAttribute("userInfo", userLoginedUser);
         mav.setViewName("index");
         return mav;
     }
 
     @RequestMapping("select")
-  public ModelAndView selectBookOrClass(@RequestParam("classname") String classname,ModelAndView mav,HttpSession session)
-    {
-         return mav;
+    public ModelAndView selectBookOrClass(@RequestParam("classname") String classname, ModelAndView mav, HttpSession session) {
+        return mav;
     }
 
     @RequestMapping("test")
-    public String test ()
-    {
+    public String test() {
         return "fileUpload";
     }
 
     @PostMapping("/uploadImage")
     @ResponseBody
-    public String upFile (@RequestParam("file")MultipartFile file)
-    {
+    public String upFile(@RequestParam("file") MultipartFile file) {
         //最终路径
-        String lastPath="";
+        String lastPath = "";
         String path = "D:/devsoft1/img/";
         String fileName = file.getOriginalFilename();
-        String suffixName=fileName.substring(fileName.lastIndexOf("."));
-        fileName= UUID.randomUUID()+suffixName;
+        String suffixName = fileName.substring(fileName.lastIndexOf("."));
+        fileName = UUID.randomUUID() + suffixName;
         System.out.println(fileName);
         System.out.println("type::" + suffixName);
         System.out.println("filename::" + fileName);
@@ -121,15 +118,31 @@ public class helloController {
             System.out.println("执行失败");
             return "failed";
         }
-        imageMap.put(file.getOriginalFilename(),lastPath);
-        for(Map.Entry<String,String> a:imageMap.entrySet())
-        {
-            System.out.println("+++++++++++++"+a.getKey()+"+++++++++++++");
-            System.out.println("+++++++++++++"+a.getValue()+"+++++++++++++");
+        imageMap.put(file.getOriginalFilename(), lastPath);
+        for (Map.Entry<String, String> a : imageMap.entrySet()) {
+            System.out.println("+++++++++++++" + a.getKey() + "+++++++++++++");
+            System.out.println("+++++++++++++" + a.getValue() + "+++++++++++++");
 
         }
         System.out.println("11111");
         return "success";
+    }
+
+    @RequestMapping("/jasonTest")
+    public Result getMap() {
+
+        Result r = Result.ok();
+        Map<String, Object> result = new HashMap<>(3);
+        User user = new User();
+        user.setUsername("柳梦琦");
+        user.setPassword("1234567489l");
+        user.setInsertdatetime(new Date());
+        result.put("用户信息", user);
+        result.put("网站", "http://www.baidu.com");
+        result.put("CSDN地址", null);
+        result.put("粉丝数量", 1235);
+        r.setData(result);
+        return r;
     }
 
 }
