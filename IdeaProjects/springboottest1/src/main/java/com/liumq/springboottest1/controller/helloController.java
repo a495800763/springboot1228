@@ -28,12 +28,15 @@ public class helloController {
     LoginService loginService;
 
     @GetMapping("/")
-    public String hello(Model model) {
+    public Result hello(Model model) {
+        Result r= Result.ok();
         List<BookType> typeResultBookTypes = loginService.getAllBookType();
         List<Book> result = loginService.getAllBook();
-        model.addAttribute("resultList", typeResultBookTypes);
-        model.addAttribute("bookList", result);
-        return "index";
+        Map<String,Object> dataResult = new HashMap<>();
+        dataResult.put("typeResultBookTypes",typeResultBookTypes);
+        dataResult.put("result",result);
+        r.setData(dataResult);
+        return r;
     }
 
     @RequestMapping(value = "registerConfirm", method = RequestMethod.POST)
